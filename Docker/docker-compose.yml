@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  ghost:
+     build: .
+     ports:
+       - 80:2368
+       - 443:2368
+     environment:
+      NODE_ENV: production
+      url : http://localhost:80  # Change with your url
+      #RDS(MySQL) Connection
+      database__client: mysql
+      database__connection__host: db # Change with your RDS url
+      database__connection__user: root
+      database__connection__password: example
+      database__connection__database: ghost
+      #S3 Connection
+      AWS_ACCESS_KEY_ID: acceskeyid
+      AWS_SECRET_ACCESS_KEY: secretacceskey
+      AWS_DEFAULT_REGION: region
+      GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET: pathofbucket
